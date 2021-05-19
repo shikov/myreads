@@ -4,7 +4,8 @@ function Book(props) {
     <li>
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{backgroundImage: `url(${props.book.imageLinks.smallThumbnail})`}}></div>
+          <div className="book-cover" style={{backgroundImage: `url(${
+            props.book.imageLinks? props.book.imageLinks.smallThumbnail:''})`}}></div>
           <div className="book-shelf-changer">
             <select defaultValue={props.book.shelf}>
               <option value="move" disabled>Move to...</option>
@@ -16,7 +17,7 @@ function Book(props) {
           </div>
         </div>
         <div className="book-title">{props.book.title}</div>
-        <div className="book-authors">{props.book.authors[0]}</div>
+        <div className="book-authors">{props.book.authors}</div>
       </div>
     </li>
   )

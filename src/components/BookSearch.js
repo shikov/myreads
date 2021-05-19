@@ -1,16 +1,52 @@
-import {Link} from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { search } from '../BooksAPI'
 import propTypes from 'prop-types'
 import BookList from './BookList'
 
-function BookSearch(props) {
-  return (
-    <div className="search-books">
-      <div className="search-books-bar">
-        <Link to='/'>
-          <button className="close-search">Close</button>
-        </Link>
-        <div className="search-books-input-wrapper">
-          {/*
+class BookSearch extends React.Component {
+  static propTypes = {
+    lib: propTypes.array.isRequired
+  }
+
+  state = {
+    searchResult: []
+  }
+
+  searchBooks = (e) => {
+    if (!e.target.value) {
+      this.setState({ searchResult: [] })
+      return
+    }
+    search(e.target.value).then(books => {
+      if (books.error) {
+        this.setState({ searchResult: [] })
+        return
+      }
+      books = books.map(searchBook => {
+        const b = this.props.lib.filter(libBook => searchBook.id === libBook.id)
+        if (b.length) {
+          searchBook.shelf = b[0].shelf
+        }
+        else {
+          searchBook.shelf = 'none'
+        }
+        return searchBook
+      })
+      this.setState({ searchResult: books })
+    })
+      .catch(err => this.setState({ searchResult: [] }))
+  }
+
+  render() {
+    return (
+      <div className="search-books">
+        <div className="search-books-bar">
+          <Link to='/'>
+            <button className="close-search">Close</button>
+          </Link>
+          <div className="search-books-input-wrapper">
+            {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
               You can find these search terms here:
               https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
@@ -18,19 +54,16 @@ function BookSearch(props) {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-          <input type="text" placeholder="Search by title or author" />
+            <input onChange={this.searchBooks} type="text" placeholder="Search by title or author" />
 
+          </div>
+        </div>
+        <div className="search-books-results">
+          <BookList books={this.state.searchResult} />
         </div>
       </div>
-      <div className="search-books-results">
-        <BookList />
-      </div>
-    </div>
-  )
-}
-
-BookSearch.prototype = {
-  lib: propTypes.array.isRequired
+    )
+  }
 }
 
 export default BookSearch
