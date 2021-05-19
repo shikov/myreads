@@ -5,7 +5,6 @@ import './BookDetails.css'
 function BookDetails(props) {
   return (
     <div className="modal">
-    {console.log(props.book)}
       <div className="modal-content">
         <span onClick={() => props.dismiss()} className="close">&times;</span>
         <h3>{props.book.title}</h3>

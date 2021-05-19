@@ -203,3 +203,7 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+.start-icon {
+  width: 16px;
+}

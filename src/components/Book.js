@@ -1,4 +1,5 @@
 import propTypes from 'prop-types'
+import RatingIcon from './RatingIcon'
 function Book(props) {
   return (
     <li>
@@ -20,6 +21,16 @@ function Book(props) {
         <div className="book-title">{props.book.title}</div>
         <div className="book-authors">{props.book.authors}</div>
       </div>
+      <div className="box flex">
+        {[1, 2, 3, 4, 5].map((index) => {
+          return (
+            <RatingIcon
+              key={index}
+              index={index} 
+              rating={props.book.averageRating} />
+          )
+        })}
+    </div>
     </li>
   )
 }
