@@ -1,6 +1,6 @@
-# MyReads: A Book Lending App
+# MyReads: A Book Tracking App
 
-This is Udacity front end assignment project for a book lending web app.
+This is Udacity front end assignment project for a book tracking web app.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
