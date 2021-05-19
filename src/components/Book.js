@@ -21,7 +21,7 @@ function Book(props) {
         <div className="book-title">{props.book.title}</div>
         <div className="book-authors">{props.book.authors && props.book.authors.map(author => <div key={author}>{author}</div>)}</div>
       </div>
-      <div className="box flex">
+      <div>
         {[1, 2, 3, 4, 5].map((index) => {
           return (
             <RatingIcon
