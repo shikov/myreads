@@ -16,6 +16,11 @@ class BooksApp extends React.Component {
     .catch(() => this.setState({failedToFetch: true}))
   }
 
+  updateBook = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+    .then(() => this.componentDidMount())
+  }
+
   render() {
     return (
       <div className="app">
@@ -24,11 +29,13 @@ class BooksApp extends React.Component {
           <Route exact path='/' render={() => (
             <Library
               lib={this.state.lib}
+              updateBook={this.updateBook}
             />
           )} />
           <Route exact path='/search' render={() => (
             <BookSearch
               lib={this.state.lib}
+              updateBook={this.updateBook}
             />
           )} />
         </BrowserRouter>

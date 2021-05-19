@@ -7,7 +7,7 @@ function Book(props) {
           <div className="book-cover" style={{backgroundImage: `url(${
             props.book.imageLinks? props.book.imageLinks.smallThumbnail:''})`}}></div>
           <div className="book-shelf-changer">
-            <select defaultValue={props.book.shelf}>
+            <select onChange={(e) => props.updateBook(props.book, e.target.value)} defaultValue={props.book.shelf}>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -24,7 +24,8 @@ function Book(props) {
 }
 
 Book.prototype = {
-  book: propTypes.object.isRequired
+  book: propTypes.object.isRequired,
+  updateBook: propTypes.func.isRequired
 }
 
 export default Book

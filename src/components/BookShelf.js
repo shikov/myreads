@@ -8,6 +8,7 @@ function BookShelf(props) {
       <div className="bookshelf-books">
         <BookList
           books={props.books}
+          updateBook={props.updateBook}
         />
       </div>
     </div>
@@ -16,7 +17,8 @@ function BookShelf(props) {
 
 BookShelf.prototype = {
   books: propTypes.array.isRequired,
-  title: propTypes.string.isRequired
+  title: propTypes.string.isRequired,
+  updateBook: propTypes.func.isRequired
 }
 
 export default BookShelf
