@@ -39,7 +39,7 @@ function Library(props) {
   )
 }
 
-Library.prototype = {
+Library.propTypes = {
   lib: propTypes.array.isRequired,
   updateBook: propTypes.func.isRequired,
   viewBook: propTypes.func.isRequired

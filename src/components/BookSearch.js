@@ -15,6 +15,15 @@ class BookSearch extends React.Component {
     searchResult: []
   }
 
+  searchTimeout =  0
+
+  delayedSearch = e => {
+    if(this.searchTimeout) clearTimeout(this.searchTimeout)
+    this.searchTimeout = setTimeout(() => {
+      this.searchBooks(e)
+    }, 300)
+  }
+
   searchBooks = (e) => {
     if (!e.target.value) {
       this.setState({ searchResult: [] })
@@ -44,8 +53,8 @@ class BookSearch extends React.Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <Link to='/'>
-            <button className="close-search">Close</button>
+          <Link className="close-search" to='/'>
+            Close
           </Link>
           <div className="search-books-input-wrapper">
             {/*
@@ -56,7 +65,7 @@ class BookSearch extends React.Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <input onChange={this.searchBooks} type="text" placeholder="Search by title or author" />
+            <input onChange={this.delayedSearch} type="text" placeholder="Search by title or author" />
 
           </div>
         </div>
