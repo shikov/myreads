@@ -10,9 +10,18 @@ function Library(props) {
       </div>
       <div className="list-books-content">
         <div>
-          <BookShelf />
-          <BookShelf />
-          <BookShelf />
+          <BookShelf
+            books={props.lib.filter(book => book.shelf === 'currentlyReading')}
+            title='Currently Reading'
+          />
+          <BookShelf
+            books={props.lib.filter(book => book.shelf === 'wantToRead')}
+            title='Want to Read'
+          />
+          <BookShelf
+            books={props.lib.filter(book => book.shelf === 'read')}
+            title='Read'
+          />
         </div>
       </div>
       <div className="open-search">

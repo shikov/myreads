@@ -184,11 +184,17 @@ button:active {
   cursor: pointer;
 }
 
+.book-shelf-changer select option:checked {
+  background-color: green;
+}
+
 /* book cover */
 
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  width: 128px;
+  height: 193px;
 }
 
 .book-cover-title {

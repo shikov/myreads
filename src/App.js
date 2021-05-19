@@ -28,7 +28,7 @@ class BooksApp extends React.Component {
           )} />
           <Route exact path='/search' render={() => (
             <BookSearch
-            lib={this.state.lib}
+              lib={this.state.lib}
             />
           )} />
         </BrowserRouter>
