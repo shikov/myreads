@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import propTypes from 'prop-types'
 import BookShelf from './BookShelf'
 
 function Library(props) {
@@ -21,6 +22,10 @@ function Library(props) {
       </div>
     </div>
   )
+}
+
+Library.prototype = {
+  lib: propTypes.array.isRequired
 }
 
 export default Library

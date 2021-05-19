@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import propTypes from 'prop-types'
 import BookList from './BookList'
 
 function BookSearch(props) {
@@ -26,6 +27,10 @@ function BookSearch(props) {
       </div>
     </div>
   )
+}
+
+BookSearch.prototype = {
+  lib: propTypes.array.isRequired
 }
 
 export default BookSearch
