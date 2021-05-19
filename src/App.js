@@ -4,11 +4,13 @@ import * as BooksAPI from './BooksAPI'
 import './App.css';
 import Library from './components/Library'
 import BookSearch from './components/BookSearch'
+import BookDetails from './components/BookDetails'
 
 class BooksApp extends React.Component {
   state = {
     lib: [],
     failedToFetch: false,
+    bookDetails: {show: false, book: null}
   }
 
   componentDidMount() {
@@ -21,6 +23,10 @@ class BooksApp extends React.Component {
     .then(() => this.componentDidMount())
   }
 
+  viewBook = book => this.setState({bookDetails: {show: true, book: book}})
+
+  dismissBookDetails = () => this.setState({bookDetails: {show: false}})
+
   render() {
     return (
       <div className="app">
@@ -30,15 +36,22 @@ class BooksApp extends React.Component {
             <Library
               lib={this.state.lib}
               updateBook={this.updateBook}
+              viewBook={this.viewBook}
             />
           )} />
           <Route exact path='/search' render={() => (
             <BookSearch
               lib={this.state.lib}
               updateBook={this.updateBook}
+              viewBook={this.viewBook}
             />
           )} />
         </BrowserRouter>
+        {this.state.bookDetails.show &&
+        <BookDetails
+          book={this.state.bookDetails.book}
+          dismiss={this.dismissBookDetails}
+        />}
       </div>
     )
   }

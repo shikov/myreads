@@ -14,16 +14,19 @@ function Library(props) {
             books={props.lib.filter(book => book.shelf === 'currentlyReading')}
             title='Currently Reading'
             updateBook={props.updateBook}
+            viewBook={props.viewBook}
           />
           <BookShelf
             books={props.lib.filter(book => book.shelf === 'wantToRead')}
             title='Want to Read'
             updateBook={props.updateBook}
+            viewBook={props.viewBook}
           />
           <BookShelf
             books={props.lib.filter(book => book.shelf === 'read')}
             title='Read'
             updateBook={props.updateBook}
+            viewBook={props.viewBook}
           />
         </div>
       </div>
@@ -38,7 +41,8 @@ function Library(props) {
 
 Library.prototype = {
   lib: propTypes.array.isRequired,
-  updateBook: propTypes.func.isRequired
+  updateBook: propTypes.func.isRequired,
+  viewBook: propTypes.func.isRequired
 }
 
 export default Library

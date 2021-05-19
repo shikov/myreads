@@ -7,7 +7,8 @@ import BookList from './BookList'
 class BookSearch extends React.Component {
   static propTypes = {
     lib: propTypes.array.isRequired,
-    updateBook: propTypes.func.isRequired
+    updateBook: propTypes.func.isRequired,
+    viewBook: propTypes.func.isRequired
   }
 
   state = {
@@ -61,7 +62,8 @@ class BookSearch extends React.Component {
         </div>
         <div className="search-books-results">
           <BookList books={this.state.searchResult}
-          updateBook={this.props.updateBook} />
+          updateBook={this.props.updateBook}
+          viewBook={this.props.viewBook} />
         </div>
       </div>
     )

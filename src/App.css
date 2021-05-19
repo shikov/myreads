@@ -195,6 +195,7 @@ button:active {
   background: #eee;
   width: 128px;
   height: 193px;
+  cursor: pointer;
 }
 
 .book-cover-title {
